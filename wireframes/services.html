@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find a service - Midlands Community Clinic Booking Portal</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <!-- skip link so keyboard and screen reader users can jump past the menu -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <p class="site-name">Midlands Community Clinic</p>
+    <p>Book your clinic visit online - Pietermaritzburg and surrounds</p>
+
+    <nav aria-label="Main menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" aria-current="page">Find a service</a></li>
+        <li><a href="book.html">Book a visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <h1>Find a clinic service</h1>
+
+    <section aria-labelledby="search-heading">
+      <h2 id="search-heading">Search and filter</h2>
+
+      <!-- no JavaScript here, this is only a wireframe so the form does nothing yet -->
+      <form action="services.html" method="get" role="search" aria-label="Search services">
+        <p>
+          <label for="search-box">Search for a service</label>
+          <input type="search" id="search-box" name="search" aria-describedby="search-help">
+          <span class="help-text" id="search-help">For example: blood pressure, vaccination, baby clinic</span>
+        </p>
+
+        <fieldset>
+          <legend>Type of service</legend>
+          <label><input type="checkbox" name="type" value="checkup"> General check-up</label>
+          <label><input type="checkbox" name="type" value="child"> Child health</label>
+          <label><input type="checkbox" name="type" value="chronic"> Blood pressure and sugar</label>
+          <label><input type="checkbox" name="type" value="vaccine"> Vaccinations</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Branch</legend>
+          <label><input type="checkbox" name="branch" value="scottsville"> Scottsville</label>
+          <label><input type="checkbox" name="branch" value="edendale"> Edendale</label>
+          <label><input type="checkbox" name="branch" value="imbali"> Imbali</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>How urgent is it?</legend>
+          <label><input type="radio" name="urgent" value="routine" checked> Not urgent, I can book a visit</label>
+          <label><input type="radio" name="urgent" value="today"> I need to be seen today, I will phone the branch</label>
+          <label><input type="radio" name="urgent" value="emergency"> Emergency, I will call 10177 or 112</label>
+        </fieldset>
+
+        <p><button type="submit">Show services</button></p>
+      </form>
+    </section>
+
+    <aside aria-labelledby="help-heading">
+      <h2 id="help-heading">Not sure what you need?</h2>
+      <p>[Wireframe note: a helpline number and opening times will go here.]</p>
+    </aside>
+
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading">Services (3 shown)</h2>
+
+      <article>
+        <h3>Blood pressure check</h3>
+        <p>A nurse checks your blood pressure and talks to you about the results.</p>
+        <dl>
+          <dt>Branch</dt>
+          <dd>Scottsville</dd>
+          <dt>Nurse on duty</dt>
+          <dd>[nurse name goes here]</dd>
+          <dt>Next free time</dt>
+          <dd>[date and time go here]</dd>
+        </dl>
+        <a href="book.html">Book a blood pressure check</a>
+      </article>
+
+      <article>
+        <h3>Baby clinic</h3>
+        <p>Weighing, growth checks and baby vaccinations.</p>
+        <dl>
+          <dt>Branch</dt>
+          <dd>Edendale</dd>
+          <dt>Nurse on duty</dt>
+          <dd>[nurse name goes here]</dd>
+          <dt>Next free time</dt>
+          <dd>[date and time go here]</dd>
+        </dl>
+        <a href="book.html">Book a baby clinic visit</a>
+      </article>
+
+      <article>
+        <h3>General check-up</h3>
+        <p>A general visit to talk to a nurse about how you are feeling.</p>
+        <dl>
+          <dt>Branch</dt>
+          <dd>Imbali</dd>
+          <dt>Nurse on duty</dt>
+          <dd>[nurse name goes here]</dd>
+          <dt>Next free time</dt>
+          <dd>[date and time go here]</dd>
+        </dl>
+        <a href="book.html">Book a general check-up</a>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Midlands Community Clinic - a wireframe made for a student project. Not a real clinic.</p>
+    <p>In an emergency call 10177 or 112, or go to your nearest hospital.</p>
+  </footer>
+
+</body>
+</html>

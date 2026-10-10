@@ -1,0 +1,304 @@
+/* main.css - styles for the 3 wireframe pages of the Midlands Community Clinic portal.
+   I kept it simple on purpose. These are wireframes, so the focus is on structure,
+   colour contrast and keyboard focus, not on making it look fancy.
+
+   CONTRAST NUMBERS (I checked each pair with a contrast checker, WCAG 2.1 AA needs
+   4.5:1 for normal text and 3:1 for large text and for borders/focus rings):
+   - body text   #1F2933 on #F9F7F3  = 13.79:1  (passes)
+   - muted text  #4A5560 on #F9F7F3  = 7.11:1   (passes)
+   - header text #FFFFFF on #14532D  = 9.11:1   (passes)
+   - links       #1B4F8A on #F9F7F3  = 7.75:1   (passes)
+   - button text #FFFFFF on #1B4F8A  = 8.29:1   (passes)
+   - error text  #9B1C1C on #FFFFFF  = 8.15:1   (passes)
+   - notice text #3D2F00 on #FFF4CE  = 11.89:1  (passes)
+   - footer text #FFFFFF on #1F2933  = 14.76:1  (passes)
+   - input border #5B6670 on #FFFFFF = 5.87:1   (passes the 3:1 rule for borders)
+   - focus ring  #2B6CB0 on #F9F7F3  = 5.07:1   (passes the 3:1 rule)
+   - focus ring on the green header  #FFD54F on #14532D = 6.46:1 (passes) */
+
+:root {
+  --page-colour: #F9F7F3;
+  --text-colour: #1F2933;
+  --muted-colour: #4A5560;
+  --header-colour: #14532D;
+  --link-colour: #1B4F8A;
+  --border-colour: #5B6670;
+  --focus-colour: #2B6CB0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.125rem; /* 18px so it is easy to read */
+  line-height: 1.6;
+  color: var(--text-colour);
+  background-color: var(--page-colour);
+}
+
+/* ---------- focus rings ---------- */
+/* I did NOT remove the browser outline without replacing it.
+   This is my own ring, 3px thick with a 2px gap so it is easy to see. */
+:focus-visible {
+  outline: 3px solid var(--focus-colour);
+  outline-offset: 2px;
+}
+
+/* the header is dark green so the blue ring would be hard to see there,
+   so I used a yellow ring inside the header */
+header :focus-visible {
+  outline: 3px solid #FFD54F;
+  outline-offset: 2px;
+}
+
+/* ---------- skip link ---------- */
+/* hidden until a keyboard user tabs onto it */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background-color: #FFFFFF;
+  color: var(--link-colour);
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* ---------- header and nav ---------- */
+header {
+  background-color: var(--header-colour);
+  color: #FFFFFF; /* 9.11:1 on the green */
+  padding: 1rem;
+}
+
+header p {
+  margin: 0;
+}
+
+.site-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+nav a {
+  color: #FFFFFF;
+  padding: 0.25rem 0;
+}
+
+/* the page you are on gets an underline (not just a colour, so it
+   does not rely on colour alone) */
+nav a[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- main layout ---------- */
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2rem; /* large text */
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+a {
+  color: var(--link-colour);
+}
+
+/* ---------- cards ---------- */
+article {
+  background-color: #FFFFFF;
+  border: 2px solid var(--border-colour); /* 5.48:1 on the page */
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.card-grid article {
+  margin-bottom: 0;
+}
+
+/* ---------- buttons (links styled as buttons, and real buttons) ---------- */
+.button,
+button {
+  display: inline-block;
+  background-color: var(--link-colour);
+  color: #FFFFFF; /* 8.29:1 */
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--link-colour);
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover,
+button:hover {
+  background-color: #123A66;
+  border-color: #123A66;
+}
+
+.button-plain {
+  background-color: #FFFFFF;
+  color: var(--link-colour);
+}
+
+/* ---------- forms ---------- */
+form p,
+fieldset {
+  margin-bottom: 1.25rem;
+}
+
+label,
+legend {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+fieldset {
+  border: 2px solid var(--border-colour);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+
+/* labels inside a fieldset for checkboxes and radios sit next to the box */
+fieldset label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  max-width: 28rem;
+  font-size: 1.125rem;
+  padding: 0.5rem;
+  border: 2px solid var(--border-colour); /* 5.87:1 on white */
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  color: var(--text-colour);
+}
+
+.help-text {
+  display: block;
+  color: var(--muted-colour); /* 7.11:1 */
+  font-size: 1rem;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.error {
+  color: #9B1C1C; /* 8.15:1 on white */
+  font-weight: bold;
+}
+
+/* ---------- notice box (the aside) ---------- */
+aside {
+  background-color: #FFF4CE;
+  color: #3D2F00; /* 11.89:1 */
+  border-left: 8px solid #8A6D00;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+aside h2,
+aside h3 {
+  margin-top: 0;
+}
+
+aside a {
+  color: #123A66;
+}
+
+/* ---------- definition lists inside cards ---------- */
+dl {
+  margin: 0.5rem 0 1rem 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 0.5rem 0;
+}
+
+/* ---------- footer ---------- */
+footer {
+  background-color: #1F2933;
+  color: #FFFFFF; /* 14.76:1 */
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: #FFFFFF;
+}
+
+footer :focus-visible {
+  outline: 3px solid #FFD54F;
+  outline-offset: 2px;
+}
+
+/* ---------- bigger screens ---------- */
+@media (min-width: 48rem) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+}

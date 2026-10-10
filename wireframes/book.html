@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a visit - Midlands Community Clinic Booking Portal</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <!-- skip link so keyboard and screen reader users can jump past the menu -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <p class="site-name">Midlands Community Clinic</p>
+    <p>Book your clinic visit online - Pietermaritzburg and surrounds</p>
+
+    <nav aria-label="Main menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Find a service</a></li>
+        <li><a href="book.html" aria-current="page">Book a visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <h1>Book a visit</h1>
+
+    <div class="two-columns">
+
+      <div>
+        <!-- the service the person picked -->
+        <article aria-labelledby="service-heading">
+          <h2 id="service-heading">Blood pressure check</h2>
+          <p>A nurse checks your blood pressure and talks to you about the results.</p>
+          <dl>
+            <dt>Branch</dt>
+            <dd>Scottsville</dd>
+            <dt>Nurse on duty</dt>
+            <dd>[nurse name goes here]</dd>
+            <dt>Next free time</dt>
+            <dd>[date and time go here]</dd>
+          </dl>
+        </article>
+
+        <section aria-labelledby="form-heading">
+          <h2 id="form-heading">Your details</h2>
+          <p>Fields marked with a star (*) must be filled in.</p>
+
+          <!-- no JavaScript in the wireframe, the real checking happens in the React version -->
+          <form action="book.html" method="post">
+
+            <p>
+              <label for="full-name">Full name *</label>
+              <input type="text" id="full-name" name="fullName" autocomplete="name" required aria-describedby="name-help">
+              <span class="help-text" id="name-help">The name on your ID or clinic card.</span>
+            </p>
+
+            <p>
+              <label for="cell-number">Cell number *</label>
+              <input type="tel" id="cell-number" name="cellNumber" autocomplete="tel" required aria-describedby="cell-help">
+              <span class="help-text" id="cell-help">10 digits, for example 0821234567. We use it to SMS your reminder.</span>
+            </p>
+
+            <p>
+              <label for="branch">Branch *</label>
+              <select id="branch" name="branch" required>
+                <option value="">Choose a branch</option>
+                <option value="scottsville">Scottsville</option>
+                <option value="edendale">Edendale</option>
+                <option value="imbali">Imbali</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="visit-date">Date you would like to come *</label>
+              <input type="date" id="visit-date" name="visitDate" required aria-describedby="date-help">
+              <span class="help-text" id="date-help">Pick a weekday. The clinic is closed on Sundays.</span>
+            </p>
+
+            <p>
+              <label for="reason">Reason for the visit (optional)</label>
+              <textarea id="reason" name="reason" rows="4" aria-describedby="reason-help"></textarea>
+              <span class="help-text" id="reason-help">Keep it short. Do not put your ID number here.</span>
+            </p>
+
+            <fieldset>
+              <legend>Reminder</legend>
+              <label><input type="checkbox" name="sms" value="yes" checked> Please SMS me a reminder the day before</label>
+            </fieldset>
+
+            <p><button type="submit">Book my visit</button></p>
+          </form>
+        </section>
+
+        <!-- just a note for the wireframe, shows where the error text will go -->
+        <section aria-labelledby="error-note-heading">
+          <h2 id="error-note-heading">Wireframe note: how errors will look</h2>
+          <p>
+            In the React version, if a field is wrong, the message shows under the
+            field in dark red text, like this:
+          </p>
+          <p class="error">Please type your full name.</p>
+          <p>A screen reader will read the message out straight away.</p>
+        </section>
+      </div>
+
+      <aside aria-labelledby="bring-heading">
+        <h2 id="bring-heading">What to bring</h2>
+        <ul>
+          <li>Your ID or clinic card</li>
+          <li>Any medicine you are taking</li>
+          <li>Your child's Road to Health card, if it is a baby clinic visit</li>
+        </ul>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Midlands Community Clinic - a wireframe made for a student project. Not a real clinic.</p>
+    <p>In an emergency call 10177 or 112, or go to your nearest hospital.</p>
+  </footer>
+
+</body>
+</html>

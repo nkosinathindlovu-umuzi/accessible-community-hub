@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Midlands Community Clinic Booking Portal</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <!-- skip link so keyboard and screen reader users can jump past the menu -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <p class="site-name">Midlands Community Clinic</p>
+    <p>Book your clinic visit online - Pietermaritzburg and surrounds</p>
+
+    <nav aria-label="Main menu">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="services.html">Find a service</a></li>
+        <li><a href="book.html">Book a visit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section aria-labelledby="welcome-heading">
+      <h1 id="welcome-heading">Sawubona! Book your clinic visit online</h1>
+      <p>
+        Skip the long queue. Choose a service, pick a branch near you and
+        book a time that works for you. You can also see which nurse is on duty.
+      </p>
+      <p>
+        <a class="button" href="book.html">Book a visit</a>
+        <a class="button button-plain" href="services.html">Find a service</a>
+      </p>
+    </section>
+
+    <!-- notice box, it is extra info so I used aside -->
+    <aside aria-labelledby="notice-heading">
+      <h2 id="notice-heading">Load-shedding notice</h2>
+      <p>
+        [Wireframe note: this box will show any change to opening times
+        when there is load-shedding. Check here before you travel.]
+      </p>
+    </aside>
+
+    <section aria-labelledby="how-heading">
+      <h2 id="how-heading">What you can do here</h2>
+      <div class="card-grid">
+        <article>
+          <h3>Find a service</h3>
+          <p>Search for check-ups, child health, vaccinations and more.</p>
+          <a href="services.html">Go to services</a>
+        </article>
+        <article>
+          <h3>Book a visit</h3>
+          <p>Fill in a short form and choose a branch and a date.</p>
+          <a href="book.html">Go to booking</a>
+        </article>
+        <article>
+          <h3>See who is on duty</h3>
+          <p>Each service shows the next free time and the nurse on duty.</p>
+          <a href="services.html">See availability</a>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="branches-heading">
+      <h2 id="branches-heading">Our branches</h2>
+      <div class="card-grid">
+        <article>
+          <h3>Scottsville Branch</h3>
+          <dl>
+            <dt>Opening hours</dt>
+            <dd>[hours go here]</dd>
+            <dt>Phone</dt>
+            <dd>[phone number goes here]</dd>
+          </dl>
+        </article>
+        <article>
+          <h3>Edendale Branch</h3>
+          <dl>
+            <dt>Opening hours</dt>
+            <dd>[hours go here]</dd>
+            <dt>Phone</dt>
+            <dd>[phone number goes here]</dd>
+          </dl>
+        </article>
+        <article>
+          <h3>Imbali Branch</h3>
+          <dl>
+            <dt>Opening hours</dt>
+            <dd>[hours go here]</dd>
+            <dt>Phone</dt>
+            <dd>[phone number goes here]</dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Midlands Community Clinic - a wireframe made for a student project. Not a real clinic.</p>
+    <p>In an emergency call 10177 or 112, or go to your nearest hospital.</p>
+  </footer>
+
+</body>
+</html>
