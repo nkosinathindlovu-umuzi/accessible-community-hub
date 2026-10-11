@@ -1,111 +1,387 @@
+/* index.css - the styles for the whole React app.
+   The colours are the same ones I used in the wireframes (see wireframes/main.css
+   for the contrast numbers). Every text colour is at least 4.5:1 on its background. */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --page-colour: #F9F7F3;
+  --text-colour: #1F2933;
+  --muted-colour: #4A5560;
+  --header-colour: #14532D;
+  --link-colour: #1B4F8A;
+  --border-colour: #5B6670;
+  --focus-colour: #2B6CB0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-colour);
+  background-color: var(--page-colour);
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* ---------- focus rings ---------- */
+/* my own ring, I do not remove the browser one without putting this in */
+:focus-visible {
+  outline: 3px solid var(--focus-colour);
+  outline-offset: 2px;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* yellow ring on the dark green header and the dark footer */
+header :focus-visible,
+footer :focus-visible {
+  outline: 3px solid #FFD54F;
+  outline-offset: 2px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+/* ---------- skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background-color: #FFFFFF;
+  color: var(--link-colour);
+  font-weight: bold;
+  z-index: 10;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+.skip-link:focus {
+  top: 0.5rem;
 }
-p {
+
+/* ---------- header and menu ---------- */
+header {
+  background-color: var(--header-colour);
+  color: #FFFFFF;
+  padding: 1rem;
+}
+
+header p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.site-name {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+nav ul {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+/* the menu buttons look like plain links */
+.nav-button {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.125rem;
+  padding: 0.5rem 0.25rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
+}
+
+/* the page you are on is bold and underlined, so it is not only a colour change */
+.nav-button[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- main ---------- */
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+a {
+  color: var(--link-colour);
+}
+
+/* ---------- cards ---------- */
+article {
+  background-color: #FFFFFF;
+  border: 2px solid var(--border-colour);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* ---------- buttons ---------- */
+button {
+  font-family: inherit;
+}
+
+main button,
+.modal button {
+  background-color: var(--link-colour);
+  color: #FFFFFF;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--link-colour);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+main button:hover,
+.modal button:hover {
+  background-color: #123A66;
+  border-color: #123A66;
+}
+
+main .button-plain,
+.modal .button-plain {
+  background-color: #FFFFFF;
+  color: var(--link-colour);
+}
+
+main .button-plain:hover,
+.modal .button-plain:hover {
+  background-color: #E8EEF5;
+  color: #123A66;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- filter buttons ---------- */
+/* the style comes from the aria-pressed value, so what the screen reader
+   hears and what the screen shows can not get out of step */
+main .toggle-button {
+  background-color: #FFFFFF;
+  color: var(--link-colour);
+}
+
+main .toggle-button[aria-pressed="true"] {
+  background-color: var(--link-colour);
+  color: #FFFFFF;
+}
+
+/* a tick as well, so it is not only a colour change */
+main .toggle-button[aria-pressed="true"]::before {
+  content: "\2713  ";
+}
+
+.accordion-heading {
+  margin: 1rem 0 0.5rem 0;
+}
+
+main .accordion-button {
+  width: 100%;
+  text-align: left;
+  background-color: #FFFFFF;
+  color: var(--text-colour);
+  border-color: var(--border-colour);
+}
+
+main .accordion-button:hover {
+  background-color: #E8EEF5;
+  border-color: var(--border-colour);
+}
+
+/* ---------- forms ---------- */
+.field {
+  margin-bottom: 1.25rem;
+}
+
+label,
+legend {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+fieldset {
+  border: 2px solid var(--border-colour);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.25rem 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  max-width: 28rem;
+  font-family: inherit;
+  font-size: 1.125rem;
+  padding: 0.5rem;
+  border: 2px solid var(--border-colour);
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  color: var(--text-colour);
+}
+
+/* a field with an error gets a thicker, red border */
+.invalid {
+  border-color: #9B1C1C;
+  border-width: 4px;
+}
+
+.help-text {
+  display: block;
+  color: var(--muted-colour);
+  font-size: 1rem;
+  margin: 0.25rem 0 0 0;
+}
+
+.error {
+  color: #9B1C1C;
+  font-weight: bold;
+  margin: 0.25rem 0 0 0;
+}
+
+.form-summary {
+  color: #9B1C1C;
+  font-weight: bold;
+}
+
+.result-count {
+  font-weight: bold;
+}
+
+/* ---------- side box ---------- */
+aside {
+  background-color: #FFF4CE;
+  color: #3D2F00;
+  border-left: 8px solid #8A6D00;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+aside h2 {
+  margin-top: 0;
+}
+
+dl {
+  margin: 0.5rem 0 1rem 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 0.5rem 0;
+}
+
+/* ---------- popup ---------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(31, 41, 51, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.modal {
+  background-color: #FFFFFF;
+  color: var(--text-colour);
+  border: 4px solid var(--link-colour);
+  border-radius: 6px;
+  max-width: 32rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+/* ---------- footer ---------- */
+footer {
+  background-color: #1F2933;
+  color: #FFFFFF;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* ---------- bigger screens ---------- */
+@media (min-width: 48rem) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
 }
