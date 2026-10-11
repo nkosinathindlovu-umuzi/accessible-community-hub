@@ -1,0 +1,9 @@
+# Settings for putting the site online with Netlify.
+# Netlify reads this file, runs the build command, and shows what is in the dist folder.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
