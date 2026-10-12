@@ -13,13 +13,18 @@ The clinic is not real. The branches (Scottsville, Edendale and Imbali), the nur
 - README.md: this file. It also has the Part C write-up.
 
 ## How to run it
+Clone the repository to your local machine and then open your terminal and locate the the root folder similar to below:
+```bash
+nkosi@LAPTOP-5STUIT13 MINGW64 ~/OneDrive/Documents/capstone4/accessible-community-hub (main)
+```
+And then run these commands one at a time:
 
 ```bash
 npm install
 npm run dev
 ```
 
-To run the tests or make the final version of the site:
+To run the tests or make the final version of the site(these tests must also run in the root folder):
 
 ```bash
 npm test
@@ -46,7 +51,7 @@ The code is in src. The components are in src/components, the services list is i
 
 ### 1. Three trade-offs
 
-Keeping Tab inside the popup. After a booking, a popup shows the details. If Tab could leave the popup, a keyboard user would end up in the page behind it, which they can not see. So Tab goes round inside the popup, and the page behind it is switched off with the inert attribute. A trap can lock someone in, so Escape always closes the popup and there is a Close button. When it closes, focus goes back to the button that opened it. I wrote this by hand because the built-in dialog element was harder for me to test.
+Keeping Tab inside the popup. After a booking, a popup shows the details. If Tab could leave the popup, a keyboard user would end up in the page behind it, which they can not see. So Tab goes round inside the popup, and the page behind it is switched off with the inert attribute. A trap can lock someone in, so Escape always closes the popup and there is a Close button. When it closes, focus goes back to the button that opened it.
 
 Speaking too much or too little. Screen readers read live regions out loud. The results count is polite, so it waits until the screen reader has finished talking, and so is each field error. Only the message after pressing Book my visit ("There are 2 problems") is assertive, because the person needs to hear it straight away. The cost is that the count changes on every letter typed in the search box. I did not add a delay, to keep the code simple.
 
@@ -57,13 +62,13 @@ Normal controls or fancy ones. I used the browser's own select boxes, date picke
 Every accessibility value is worked out from a state variable in the same render, so what a screen reader hears can not get out of step with the screen.
 
 - The filters-open state sets aria-expanded on the Filters button and hides the panel.
-- The chosen-types list sets aria-pressed on each type button. The CSS uses aria-pressed to colour the button too.
+- The chosen-types list sets aria-pressed on each type button.
 - The errors state sets aria-invalid, adds the error to aria-describedby, and fills a polite live region that is always on the page.
 - A summary state fills the assertive live region after a failed submit.
 - The number of services shown goes into a polite status line.
 - The current page sets aria-current on the menu and changes the page title.
 
-I move focus with useRef and the focus method: to the new page heading when the page changes, to the first wrong field when the form fails, and into the popup when it opens. It goes back when the popup closes, using a useEffect cleanup. I did not use aria-busy, because nothing loads from a server.
+I move focus with useRef and the focus method: to the new page heading when the page changes, to the first wrong field when the form fails, and into the popup when it opens. It goes back when the popup closes, using a useEffect cleanup.
 
 ### 3. Testing and checking
 
@@ -75,9 +80,9 @@ Automated:
 
 Manual:
 
-- I tested with NVDA and Chrome on Windows, and did a keyboard-only test with the mouse put away. The full log is in test-results/manual-testing-log.md.
-- What I found: [write one or two sentences here after the NVDA test]
-- I only tested with NVDA, not VoiceOver or Orca. Lighthouse can only find some problems, which is why I tested by hand too.
+- I tested with NVDA and Chrome on Windows. The log is in test-results/manual-testing-log.md.
+- What I found: NVDA read the page title and the main menu (as a navigation with a list of 3 items), and said which page I was on. It read the Filters button as a collapsed level 3 heading, and said expanded after I pressed it. Tab moved from button to button and NVDA named each one. I did not listen to the form errors, the type buttons and the popup with NVDA, but the automated tests check them.
+- I only tested with NVDA, not VoiceOver or Orca.
 
 ## What I would improve
 

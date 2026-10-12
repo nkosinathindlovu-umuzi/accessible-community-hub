@@ -1,51 +1,36 @@
 # Manual Testing Log
 
-I did these tests myself on my own laptop. Where it says "What I heard" I wrote down what the screen reader really said.
+I did these tests myself on my own laptop, with the NVDA screen reader and the Chrome browser on Windows. I wrote down what NVDA really said.
 
-## Setup
+- Date: 12 October 2026
+- Screen reader: NVDA
+- Browser: Chrome
+- Site: Midlands Community Clinic Booking Portal
 
-- Date: ____________________
-- Computer: Windows laptop
-- Screen reader: NVDA, version ____________________
-- Browser: Chrome, version ____________________
-- Speech speed: ____________________
-- I tested the built site (npm run build and npm run preview): Yes / No
+## What I noticed when I first switched NVDA on
 
-## Part 1: Screen reader test (NVDA)
+- NVDA read out the words on the page as I moved the mouse over them.
+- NVDA told me when something could be clicked, like a link or a button.
+- When I moved into a form field, NVDA made a different sound to tell me I was in a form I could fill in.
+- When I moved onto a dropdown list, NVDA made another different sound.
 
-| # | What I did | What should happen | What I heard | Pass or fail |
-|---|---|---|---|---|
-| 1 | Opened the home page | NVDA reads the page title and the heading | | |
-| 2 | Pressed Tab once | NVDA says "Skip to main content, link". Enter jumps to the main part | | |
-| 3 | Tabbed through the menu | NVDA says "Main menu" and reads each button. The current page says "current page" | | |
-| 4 | Chose "Find a service" | NVDA reads the new heading "Find a clinic service" | | |
-| 5 | Typed "baby" in the search box | NVDA says how many services were found | | |
-| 6 | Pressed Enter on the Filters button, twice | NVDA says "expanded" and then "collapsed" | | |
-| 7 | Pressed Space on a type button, twice | NVDA says "pressed" and then "not pressed" | | |
-| 8 | Went to the booking form and tabbed through every field | NVDA reads each label, says "required", and reads the help text | | |
-| 9 | Pressed "Book my visit" with an empty form | NVDA says how many problems there are. Focus moves to the first wrong field and NVDA reads its error | | |
-| 10 | Fixed a wrong field | The error goes away and NVDA does not say "invalid" any more | | |
-| 11 | Filled in the form properly and booked | NVDA reads "Your visit is booked, dialog" | | |
-| 12 | Pressed Tab a few times in the popup | Focus stays inside the popup | | |
-| 13 | Pressed Escape | The popup closes and focus goes back to the "Book my visit" button | | |
+## Part 1: Screen reader checks
 
-## Part 2: Keyboard-only test (no mouse)
-
-I put the mouse away and used only Tab, Shift+Tab, Enter, Space and Escape.
-
-| Page | The order I tabbed through | Anything wrong? |
+| What I did | What NVDA said | What this shows |
 |---|---|---|
-| Home | | |
-| Find a service | | |
-| Book a visit | | |
-| Popup | | |
+| Clicked on the browser window with the site open | NVDA made a sound and said "Chrome, Midlands Community Clinic, document" | The page title is read out, so I know which site I am on |
+| Moved into the main menu | NVDA said it was the main menu, a navigation landmark, and a list with 3 items. It also said "current page" for the page I was on | The menu is marked as navigation, and the current page is announced |
+| Pressed Tab to move around the menu | NVDA only said the name of the button I landed on, and the same for each item I tabbed to | Tab moves from one item to the next and each one has a clear name |
+| Moved onto the Filters button | NVDA said "Filters", "collapsed" and "heading level 3". After I pressed it, it said "expanded" | The Filters button tells the screen reader if it is open or closed, and it is a proper heading |
 
-- Could I reach every button, link and field? Yes / No
-- Did I ever get stuck (a keyboard trap)? Yes / No
-- Could I always see where the focus was? Yes / No
+## Part 2: Keyboard tab order
 
-## Part 3: Problems I found and what I changed
+When I used the Tab key, the focus moved from one button to the next, and NVDA said the name of each one as I got to it.
 
-1. ____________________
-2. ____________________
-3. ____________________
+## Part 3: What I have not listened to with NVDA yet
+
+I did not test these four things with NVDA yet: the skip link, the error messages on the empty booking form, the type buttons on the services page, and the booking popup. The automated tests check all four (they check that focus moves to the first wrong field, that the buttons change between pressed and not pressed, and that Escape closes the popup and gives focus back). axe and Lighthouse also found no problems.
+
+## Part 4: Problems I found
+
+I did not find any problems in the checks above.
